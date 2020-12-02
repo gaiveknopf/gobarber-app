@@ -39,11 +39,10 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
+
   const navigation = useNavigation();
 
-  const { signIn, user } = useAuth();
-
-  console.log(user);
+  const { signIn } = useAuth();
 
   const handleSignIn = React.useCallback(
     async (data: SignInFormData) => {
@@ -65,8 +64,6 @@ const SignIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
-
-        // history.push('/dashboard');
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
