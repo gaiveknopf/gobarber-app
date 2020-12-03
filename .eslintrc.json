@@ -31,6 +31,8 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "import/no-duplicates": "off",
+    "react-native/no-inline-styles": "off",
     "react/jsx-filename-extension": [1, {
       "extensions": [".tsx"]
     }],
