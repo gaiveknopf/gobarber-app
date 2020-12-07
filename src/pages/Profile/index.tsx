@@ -4,12 +4,11 @@ import {
   View,
   ScrollView,
   Platform,
-  TextInput,
   Alert,
+  TextInput,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
@@ -23,10 +22,13 @@ import {
   UserAvatarButton,
   UserAvatar,
   BackButton,
+  LogoutButton,
+  HeaderButtons,
 } from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
+import { FormHandles } from '@unform/core';
 
 interface ProfileFormData {
   name: string;
@@ -37,7 +39,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
@@ -171,9 +173,14 @@ const Profile: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <BackButton onPress={handleGoBack}>
-              <Icon name="chevron-left" size={24} color="#999591" />
-            </BackButton>
+            <HeaderButtons>
+              <BackButton onPress={handleGoBack}>
+                <Icon name="chevron-left" size={24} color="#999591" />
+              </BackButton>
+              <LogoutButton onPress={() => signOut()}>
+                <Icon name="power" size={24} color="#999591" />
+              </LogoutButton>
+            </HeaderButtons>
 
             <UserAvatarButton onPress={handleUpdateAvatar}>
               <UserAvatar source={{ uri: user.avatar_url }} />

@@ -16,12 +16,22 @@ export const Title = styled.Text`
   margin: 24px 0;
 `;
 
+export const HeaderButtons = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const BackButton = styled.TouchableOpacity`
   margin-top: 180px;
 `;
 
-export const UserAvatarButton = styled(RectButton)`
+export const LogoutButton = styled.TouchableOpacity`
+  margin-top: 180px;
 `;
+
+export const UserAvatarButton = styled(RectButton)``;
 
 export const UserAvatar = styled.Image`
   width: 150px;
